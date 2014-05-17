@@ -14,8 +14,11 @@
     </tr>
     </thead>
     <tbody>
+    <% var fechaActual = new Date(); %>
+    <% fechaActual = [fechaActual.getDate(), fechaActual.getMonth()+1, fechaActual.getFullYear()]; %>
     <% _.each(items, function(item) { %>
-    <tr>
+    <% var fechaItem = item.getDisplay('fechaCaducidad').split("/"); %>
+    <tr style=<%= ((fechaActual[2] > fechaItem[2]) || (fechaActual[1] > fechaItem[1]) || (fechaActual[0] > fechaItem[0]))? 'background:red':'' %>>
 		<td><%= htmlEncode(item.getDisplay('name')) %></td>
 		<td><%= htmlEncode(item.getDisplay('fechaCaducidad')) %></td>
 		<td><%= htmlEncode(item.getDisplay('reservado')) %></td>
