@@ -4,13 +4,13 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-		 <th>fechaCaducidad</th>
-		 <th>reservado</th>
-		 <th>motivoIngreso</th>
-		 <th>motivoSalid</th>
-		 <th>enBodega</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+		 <th>Fecha de Caducidad</th>
+		 <th>¿Reservado?</th>
+		 <th>Motivo de Ingreso</th>
+		 <th>Motivo de Salida</th>
+		 <th>¿En bodega?</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -27,10 +27,10 @@
 		<td><%= htmlEncode(item.getDisplay('enBodega')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-item-edit',{id:<%= item.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-item-edit',{id:<%= item.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-item-delete',{id:<%= item.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-item-delete',{id:<%= item.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -47,12 +47,12 @@
     <input type="hidden" name="id" value="<%= item.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= item.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ingrese un nombre" value="<%= item.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-			<label for="fechaCaducidad">fechaCaducidad</label>
-    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCaducidad"  name="fechaCaducidad" placeholder="Enter value" />
+			<label for="fechaCaducidad">Fecha de Caducidad</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fechaCaducidad"  name="fechaCaducidad" placeholder="Ingrese una fecha" />
     		<%= '<scr'+'ipt>' %>
         	$('#fechaCaducidad').datepicker({autoclose:true});
         	$('#fechaCaducidad').datepicker('setDate',new Date(<%= item.get('fechaCaducidad') %>));
@@ -60,20 +60,20 @@
 		</div>
 		<div class="form-group" >
 	    <label>
-    	  <input id="reservado" name="reservado" value="true" type="checkbox" <%= item.get('reservado')?'checked':'' %>> reservado
+    	  <input id="reservado" name="reservado" value="true" type="checkbox" <%= item.get('reservado')?'checked':'' %>> ¿Reservado?
     	</label>
 		</div>
 		<div class="form-group" >
-		<label for="motivoIngreso">motivoIngreso</label>
-    	<input type="text" class="form-control" id="motivoIngreso" name="motivoIngreso" placeholder="Enter value" value="<%= item.get('motivoIngreso') %>"/>	
+		<label for="motivoIngreso">Motivo de Ingreso</label>
+    	<input type="text" class="form-control" id="motivoIngreso" name="motivoIngreso" placeholder="Seleccione un motivo" value="<%= item.get('motivoIngreso') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="motivoSalid">motivoSalid</label>
-    	<input type="text" class="form-control" id="motivoSalid" name="motivoSalid" placeholder="Enter value" value="<%= item.get('motivoSalid') %>"/>	
+		<label for="motivoSalid">Motivo de Salida</label>
+    	<input type="text" class="form-control" id="motivoSalid" name="motivoSalid" placeholder="Seleccione un motivo" value="<%= item.get('motivoSalid') %>"/>	
 		</div>
 		<div class="form-group" >
 	    <label>
-    	  <input id="enBodega" name="enBodega" value="true" type="checkbox" <%= item.get('enBodega')?'checked':'' %>> enBodega
+    	  <input id="enBodega" name="enBodega" value="true" type="checkbox" <%= item.get('enBodega')?'checked':'' %>> ¿En Bodega?
     	</label>
 		</div>
     </form>

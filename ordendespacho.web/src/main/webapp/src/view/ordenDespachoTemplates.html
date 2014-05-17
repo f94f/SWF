@@ -4,12 +4,12 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-		 <th>fecha</th>
-		 <th>cantidad</th>
-		 <th>estado</th>
-		 <th>nombreItem</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+		 <th>Fecha</th>
+		 <th>Cantidad</th>
+		 <th>Estado</th>
+		 <th>Nombre Item</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -22,10 +22,10 @@
 		<td><%= htmlEncode(ordenDespacho.getDisplay('nombreItem')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-ordenDespacho-edit',{id:<%= ordenDespacho.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenDespacho-edit',{id:<%= ordenDespacho.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-ordenDespacho-delete',{id:<%= ordenDespacho.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenDespacho-delete',{id:<%= ordenDespacho.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -42,28 +42,28 @@
     <input type="hidden" name="id" value="<%= ordenDespacho.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= ordenDespacho.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= ordenDespacho.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-			<label for="fecha">fecha</label>
-    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="Enter value" />
+			<label for="fecha">Fecha</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="" />
     		<%= '<scr'+'ipt>' %>
         	$('#fecha').datepicker({autoclose:true});
         	$('#fecha').datepicker('setDate',new Date(<%= ordenDespacho.get('fecha') %>));
     		<%= '</scr'+'ipt>' %>
 		</div>
 		<div class="form-group" >
-		<label for="cantidad">cantidad</label>
-    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Enter value" value="<%= ordenDespacho.get('cantidad') %>"/>	
+		<label for="cantidad">Cantidad</label>
+    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="" value="<%= ordenDespacho.get('cantidad') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="estado">estado</label>
-    	<input type="text" class="form-control" id="estado" name="estado" placeholder="Enter value" value="<%= ordenDespacho.get('estado') %>"/>	
+		<label for="estado">Estado</label>
+    	<input type="text" class="form-control" id="estado" name="estado" placeholder="" value="<%= ordenDespacho.get('estado') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="nombreItem">nombreItem</label>
-    	<input type="text" class="form-control" id="nombreItem" name="nombreItem" placeholder="Enter value" value="<%= ordenDespacho.get('nombreItem') %>"/>	
+		<label for="nombreItem">Nombre del Item</label>
+    	<input type="text" class="form-control" id="nombreItem" name="nombreItem" placeholder="" value="<%= ordenDespacho.get('nombreItem') %>"/>	
 		</div>
     </form>
     </div>

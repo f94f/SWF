@@ -4,12 +4,12 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-		 <th>email</th>
-		 <th>telefono</th>
-		 <th>direccion</th>
-		 <th>observaciones</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+		 <th>E-Mail</th>
+		 <th>Tel&eacute;fono</th>
+		 <th>Direcci&oacute;n</th>
+		 <th>Observaciones</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -22,10 +22,10 @@
 		<td><%= htmlEncode(proveedor.getDisplay('observaciones')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-edit',{id:<%= proveedor.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-edit',{id:<%= proveedor.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-delete',{id:<%= proveedor.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-proveedor-delete',{id:<%= proveedor.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -42,24 +42,24 @@
     <input type="hidden" name="id" value="<%= proveedor.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= proveedor.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= proveedor.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="email">email</label>
-    	<input type="text" class="form-control" id="email" name="email" placeholder="Enter value" value="<%= proveedor.get('email') %>"/>	
+		<label for="email">E-Mail</label>
+    	<input type="text" class="form-control" id="email" name="email" placeholder="" value="<%= proveedor.get('email') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="telefono">telefono</label>
-    	<input type="text" class="form-control" id="telefono" name="telefono" placeholder="Enter value" value="<%= proveedor.get('telefono') %>"/>	
+		<label for="telefono">Tel&eacute;fono</label>
+    	<input type="text" class="form-control" id="telefono" name="telefono" placeholder="" value="<%= proveedor.get('telefono') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="direccion">direccion</label>
-    	<input type="text" class="form-control" id="direccion" name="direccion" placeholder="Enter value" value="<%= proveedor.get('direccion') %>"/>	
+		<label for="direccion">Direcci&oacute;n</label>
+    	<input type="text" class="form-control" id="direccion" name="direccion" placeholder="" value="<%= proveedor.get('direccion') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="observaciones">observaciones</label>
-    	<input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="Enter value" value="<%= proveedor.get('observaciones') %>"/>	
+		<label for="observaciones">Observaciones</label>
+    	<input type="text" class="form-control" id="observaciones" name="observaciones" placeholder="" value="<%= proveedor.get('observaciones') %>"/>	
 		</div>
     </form>
     </div>

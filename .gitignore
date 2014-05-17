@@ -24,3 +24,9 @@
 /inventario.service.subsystem.web/target/
 /default-product-ear/target/
 /producto.master.service.subsystem/target/
+/factura.master.service.subsystem/target/
+/inventario.master.service.subsystem/target/
+/ordendespacho.master.service.subsystem/target/
+/ordenfabricacion.master.service.subsystem/target/
+/ordenreaprovicionamiento.master.service.subsystem/target/
+/web-product/target/

@@ -4,8 +4,8 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-    <th>Actions</th>
+    <th>Nombre</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -14,10 +14,10 @@
 		<td><%= htmlEncode(factura.getDisplay('name')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-factura-edit',{id:<%= factura.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-factura-edit',{id:<%= factura.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-factura-delete',{id:<%= factura.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-factura-delete',{id:<%= factura.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -34,8 +34,8 @@
     <input type="hidden" name="id" value="<%= factura.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= factura.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= factura.get('name') %>"/>	
 		</div>
     </form>
     </div>

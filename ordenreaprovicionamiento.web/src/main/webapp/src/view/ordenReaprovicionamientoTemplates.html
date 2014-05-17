@@ -4,11 +4,11 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-		 <th>fecha</th>
-		 <th>cantidad</th>
-		 <th>nombreProducto</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+		 <th>Fecha</th>
+		 <th>Cantidad</th>
+		 <th>Nombre del Producto</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -20,10 +20,10 @@
 		<td><%= htmlEncode(ordenReaprovicionamiento.getDisplay('nombreProducto')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-edit',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-edit',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-delete',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-delete',{id:<%= ordenReaprovicionamiento.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -40,24 +40,24 @@
     <input type="hidden" name="id" value="<%= ordenReaprovicionamiento.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= ordenReaprovicionamiento.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= ordenReaprovicionamiento.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-			<label for="fecha">fecha</label>
-    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="Enter value" />
+			<label for="fecha">Fecha</label>
+    		<input type="text" data-converter="date" data-date-format="dd/mm/yyyy" class="form-control" id="fecha"  name="fecha" placeholder="" />
     		<%= '<scr'+'ipt>' %>
         	$('#fecha').datepicker({autoclose:true});
         	$('#fecha').datepicker('setDate',new Date(<%= ordenReaprovicionamiento.get('fecha') %>));
     		<%= '</scr'+'ipt>' %>
 		</div>
 		<div class="form-group" >
-		<label for="cantidad">cantidad</label>
-    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="Enter value" value="<%= ordenReaprovicionamiento.get('cantidad') %>"/>	
+		<label for="cantidad">Cantidad</label>
+    	<input type="text" class="form-control" id="cantidad" name="cantidad" placeholder="" value="<%= ordenReaprovicionamiento.get('cantidad') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="nombreProducto">nombreProducto</label>
-    	<input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="Enter value" value="<%= ordenReaprovicionamiento.get('nombreProducto') %>"/>	
+		<label for="nombreProducto">Nombre del Producto</label>
+    	<input type="text" class="form-control" id="nombreProducto" name="nombreProducto" placeholder="" value="<%= ordenReaprovicionamiento.get('nombreProducto') %>"/>	
 		</div>
     </form>
     </div>

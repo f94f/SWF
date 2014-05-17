@@ -4,8 +4,8 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -14,10 +14,10 @@
 		<td><%= htmlEncode(inventario.getDisplay('name')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-inventario-edit',{id:<%= inventario.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-inventario-edit',{id:<%= inventario.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-inventario-delete',{id:<%= inventario.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-inventario-delete',{id:<%= inventario.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -34,8 +34,8 @@
     <input type="hidden" name="id" value="<%= inventario.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= inventario.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= inventario.get('name') %>"/>	
 		</div>
     </form>
     </div>

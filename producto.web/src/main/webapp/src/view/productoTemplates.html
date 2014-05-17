@@ -4,14 +4,14 @@
     <table class="table striped">
     <thead>
     <tr>
-		 <th>name</th>
-		 <th>tipo</th>
-		 <th>esPerecedero</th>
-		 <th>precioPromedio</th>
-		 <th>tiempoPromedio</th>
-		 <th>cantidadPromedio</th>
-		 <th>minimoNivelInventario</th>
-    <th>Actions</th>
+		 <th>Nombre</th>
+		 <th>Tipo</th>
+		 <th>¿Es Perecedero?</th>
+		 <th>Precio Promedio</th>
+		 <th>Tiempo Promedio</th>
+		 <th>Cantidad Promedio</th>
+		 <th>M&iacute;nimo Nivel de Inventario</th>
+    <th>Acciones</th>
     </tr>
     </thead>
     <tbody>
@@ -26,10 +26,10 @@
 		<td><%= htmlEncode(producto.getDisplay('minimoNivelInventario')) %></td>
     <td>
     <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-producto-edit',{id:<%= producto.id %>}); return false" >Edit</a> |
+    <a onclick="Backbone.trigger('<%= componentId %>-producto-edit',{id:<%= producto.id %>}); return false" >Editar</a> |
 	<% } %> 
 	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-producto-delete',{id:<%= producto.id %>}); return false" >Delete</a> 
+    <a onclick="Backbone.trigger('<%= componentId %>-producto-delete',{id:<%= producto.id %>}); return false" >Eliminar</a> 
 	<% } %>    
 	</td>
     </tr>
@@ -46,33 +46,33 @@
     <input type="hidden" name="id" value="<%= producto.id %>"/>
     <% }%>
 		<div class="form-group" >
-		<label for="name">name</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Enter value" value="<%= producto.get('name') %>"/>	
+		<label for="name">Nombre</label>
+    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= producto.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="tipo">tipo</label>
-    	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="Enter value" value="<%= producto.get('tipo') %>"/>	
+		<label for="tipo">Tipo</label>
+    	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="" value="<%= producto.get('tipo') %>"/>	
 		</div>
 		<div class="form-group" >
 	    <label>
-    	  <input id="esPerecedero" name="esPerecedero" value="true" type="checkbox" <%= producto.get('esPerecedero')?'checked':'' %>> esPerecedero
+    	  <input id="¿Es Perecedero?" name="esPerecedero" value="true" type="checkbox" <%= producto.get('esPerecedero')?'checked':'' %>> ¿Es Perecedero?
     	</label>
 		</div>
 		<div class="form-group" >
-		<label for="precioPromedio">precioPromedio</label>
-    	<input type="text" class="form-control" id="precioPromedio" name="precioPromedio" placeholder="Enter value" value="<%= producto.get('precioPromedio') %>"/>	
+		<label for="precioPromedio">Precio Promedio</label>
+    	<input type="text" class="form-control" id="precioPromedio" name="precioPromedio" placeholder="" value="<%= producto.get('precioPromedio') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="tiempoPromedio">tiempoPromedio</label>
-    	<input type="text" class="form-control" id="tiempoPromedio" name="tiempoPromedio" placeholder="Enter value" value="<%= producto.get('tiempoPromedio') %>"/>	
+		<label for="tiempoPromedio">Tiempo Promedio</label>
+    	<input type="text" class="form-control" id="tiempoPromedio" name="tiempoPromedio" placeholder="" value="<%= producto.get('tiempoPromedio') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="cantidadPromedio">cantidadPromedio</label>
-    	<input type="text" class="form-control" id="cantidadPromedio" name="cantidadPromedio" placeholder="Enter value" value="<%= producto.get('cantidadPromedio') %>"/>	
+		<label for="cantidadPromedio">Cantidad Promedio</label>
+    	<input type="text" class="form-control" id="cantidadPromedio" name="cantidadPromedio" placeholder="" value="<%= producto.get('cantidadPromedio') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="minimoNivelInventario">minimoNivelInventario</label>
-    	<input type="text" class="form-control" id="minimoNivelInventario" name="minimoNivelInventario" placeholder="Enter value" value="<%= producto.get('minimoNivelInventario') %>"/>	
+		<label for="minimoNivelInventario">M&iacute;nimo Nivel de Inventario</label>
+    	<input type="text" class="form-control" id="minimoNivelInventario" name="minimoNivelInventario" placeholder="" value="<%= producto.get('minimoNivelInventario') %>"/>	
 		</div>
     </form>
     </div>
