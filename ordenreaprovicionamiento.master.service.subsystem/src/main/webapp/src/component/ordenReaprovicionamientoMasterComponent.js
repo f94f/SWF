@@ -83,6 +83,13 @@ define(['controller/selectionController', 'model/cacheModel', 'model/ordenReapro
                     }
                 });
             });
+            
+            //se modifica el nombre del botón "Create" por "Crear"
+            this.toolbarModel.set('createName','Crear');
+            //se modifica el titulo del Toolbar 
+            this.toolbarModel.set('title','Proveedores1');
+            this.toolbarModel.set('showPrint',true);
+            this.toolbarModel.set('showSearch',true);
         },
         renderChilds: function(params) {
             var self = this;
