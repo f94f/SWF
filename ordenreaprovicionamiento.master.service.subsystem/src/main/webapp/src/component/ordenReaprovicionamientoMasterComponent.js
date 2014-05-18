@@ -42,11 +42,11 @@ define(['controller/selectionController', 'model/cacheModel', 'model/ordenReapro
                 for (var i = 0; i < proveedorModels.models.length; i++) {
                     var m = proveedorModels.models[i];
                     var modelCopy = m.clone();
-                    if (m.isCreated()) {
+                    if (m.isCreated() && m.attributes.email!=="") {
                         //set the id to null
                         modelCopy.unset('id');
                         self.model.get('createProveedor').push(modelCopy.toJSON());
-                    } else if (m.isUpdated()) {
+                    } else if (m.isUpdated() && m.attributes.email!=="") {
                         self.model.get('updateProveedor').push(modelCopy.toJSON());
                     }
                 }
@@ -62,11 +62,11 @@ define(['controller/selectionController', 'model/cacheModel', 'model/ordenReapro
                 for (var i = 0; i < productoModels.models.length; i++) {
                     var m = productoModels.models[i];
                     var modelCopy = m.clone();
-                    if (m.isCreated()) {
+                    if (m.isCreated() && m.attributes.tipo!=="") {
                         //set the id to null
                         modelCopy.unset('id');
                         self.model.get('createProducto').push(modelCopy.toJSON());
-                    } else if (m.isUpdated()) {
+                    } else if (m.isUpdated() && m.attributes.tipo!=="") {
                         self.model.get('updateProducto').push(modelCopy.toJSON());
                     }
                 }
@@ -84,12 +84,12 @@ define(['controller/selectionController', 'model/cacheModel', 'model/ordenReapro
                 });
             });
             
-            //se modifica el nombre del botón "Create" por "Crear"
-            this.toolbarModel.set('createName','Crear');
+            //se modifica el nombre del botï¿½n "Create" por "Crear"
+            //this.toolbarModel.set('createName','Crear');
             //se modifica el titulo del Toolbar 
-            this.toolbarModel.set('title','Proveedores1');
-            this.toolbarModel.set('showPrint',true);
-            this.toolbarModel.set('showSearch',true);
+            //this.toolbarModel.set('title','Proveedores1');
+            //this.toolbarModel.set('showPrint',true);
+            //this.toolbarModel.set('showSearch',true);
         },
         renderChilds: function(params) {
             var self = this;
