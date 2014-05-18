@@ -13,8 +13,8 @@ public abstract class _ProductoDTO {
 	private String tipo;
 	private Boolean esPerecedero;
 	private Double precioPromedio;
-	private Double tiempoPromedio;
-	private Double cantidadPromedio;
+	private Double tiempoPromedioEspera;
+	private Double cantidadPromedioAPedir;
 	private Double minimoNivelInventario;
 
 	public Long getId() {
@@ -52,19 +52,19 @@ public abstract class _ProductoDTO {
 	public void setPrecioPromedio(Double preciopromedio) {
 		this.precioPromedio = preciopromedio;
 	}
-	public Double getTiempoPromedio() {
-		return tiempoPromedio;
+	public Double getTiempoPromedioEspera() {
+		return tiempoPromedioEspera;
 	}
  
-	public void setTiempoPromedio(Double tiempopromedio) {
-		this.tiempoPromedio = tiempopromedio;
+	public void setTiempoPromedioEspera(Double tiempopromedioespera) {
+		this.tiempoPromedioEspera = tiempopromedioespera;
 	}
-	public Double getCantidadPromedio() {
-		return cantidadPromedio;
+	public Double getCantidadPromedioAPedir() {
+		return cantidadPromedioAPedir;
 	}
  
-	public void setCantidadPromedio(Double cantidadpromedio) {
-		this.cantidadPromedio = cantidadpromedio;
+	public void setCantidadPromedioAPedir(Double cantidadpromedioapedir) {
+		this.cantidadPromedioAPedir = cantidadpromedioapedir;
 	}
 	public Double getMinimoNivelInventario() {
 		return minimoNivelInventario;

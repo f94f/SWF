@@ -8,9 +8,9 @@
 		 <th>Tipo</th>
 		 <th>¿Es Perecedero?</th>
 		 <th>Precio Promedio</th>
-		 <th>Tiempo Promedio</th>
-		 <th>Cantidad Promedio</th>
-		 <th>M&iacute;nimo Nivel de Inventario</th>
+		 <th>Tiempo de espera promedio</th>
+		 <th>Cantidad promedio a pedir</th>
+		 <th>M&iacute;nimo nivel en el inventario</th>
     <th>Acciones</th>
     </tr>
     </thead>
@@ -21,8 +21,8 @@
 		<td><%= htmlEncode(producto.getDisplay('tipo')) %></td>
 		<td><%= htmlEncode(producto.getDisplay('esPerecedero')) %></td>
 		<td><%= htmlEncode(producto.getDisplay('precioPromedio')) %></td>
-		<td><%= htmlEncode(producto.getDisplay('tiempoPromedio')) %></td>
-		<td><%= htmlEncode(producto.getDisplay('cantidadPromedio')) %></td>
+		<td><%= htmlEncode(producto.getDisplay('tiempoPromedioEspera')) %></td>
+		<td><%= htmlEncode(producto.getDisplay('cantidadPromedioAPedir')) %></td>
 		<td><%= htmlEncode(producto.getDisplay('minimoNivelInventario')) %></td>
     <td>
     <% if(showEdit) {%>
@@ -47,11 +47,15 @@
     <% }%>
 		<div class="form-group" >
 		<label for="name">Nombre</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="" value="<%= producto.get('name') %>"/>	
+    	<input type="text" class="form-control" id="name" name="name" placeholder="Ingrese el nombre" value="<%= producto.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
 		<label for="tipo">Tipo</label>
-    	<input type="text" class="form-control" id="tipo" name="tipo" placeholder="" value="<%= producto.get('tipo') %>"/>	
+    	<select class="form-control" id="tipo" name="tipo">
+            <option  <%= producto.get('tipo')=='Materia Prima'?'selected':'' %> >Materia prima</option>
+            <option  <%= producto.get('tipo')=='Producto terminado'?'selected':'' %>>Producto terminado</option>
+            <option  <%= producto.get('tipo')=='Suministro'?'selected':'' %>>Suministro</option>
+        </select>	
 		</div>
 		<div class="form-group" >
 	    <label>
@@ -59,20 +63,20 @@
     	</label>
 		</div>
 		<div class="form-group" >
-		<label for="precioPromedio">Precio Promedio</label>
-    	<input type="text" class="form-control" id="precioPromedio" name="precioPromedio" placeholder="" value="<%= producto.get('precioPromedio') %>"/>	
+		<label for="precioPromedio">Precio Promedio (en pesos)</label>
+    	<input type="text" class="form-control" id="precioPromedio" name="precioPromedio" placeholder="Ingrese el valor en pesos" value="<%= producto.get('precioPromedio') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="tiempoPromedio">Tiempo Promedio</label>
-    	<input type="text" class="form-control" id="tiempoPromedio" name="tiempoPromedio" placeholder="" value="<%= producto.get('tiempoPromedio') %>"/>	
+		<label for="tiempoPromedioEspera">Tiempo Promedio de Espera (en días)</label>
+    	<input type="text" class="form-control" id="tiempoPromedioEspera" name="tiempoPromedioEspera" placeholder="Ingrese la cantidad de días" value="<%= producto.get('tiempoPromedioEspera') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="cantidadPromedio">Cantidad Promedio</label>
-    	<input type="text" class="form-control" id="cantidadPromedio" name="cantidadPromedio" placeholder="" value="<%= producto.get('cantidadPromedio') %>"/>	
+		<label for="cantidadPromedioAPedir">Cantidad Promedio a Pedir</label>
+    	<input type="text" class="form-control" id="cantidadPromedioAPedir" name="cantidadPromedioAPedir" placeholder="Ingrese la cantidad" value="<%= producto.get('cantidadPromedioAPedir') %>"/>	
 		</div>
 		<div class="form-group" >
-		<label for="minimoNivelInventario">M&iacute;nimo Nivel de Inventario</label>
-    	<input type="text" class="form-control" id="minimoNivelInventario" name="minimoNivelInventario" placeholder="" value="<%= producto.get('minimoNivelInventario') %>"/>	
+		<label for="minimoNivelInventario">M&iacute;nima cantidad en el inventario</label>
+    	<input type="text" class="form-control" id="minimoNivelInventario" name="minimoNivelInventario" placeholder="Ingrese la cantidad" value="<%= producto.get('minimoNivelInventario') %>"/>	
 		</div>
     </form>
     </div>

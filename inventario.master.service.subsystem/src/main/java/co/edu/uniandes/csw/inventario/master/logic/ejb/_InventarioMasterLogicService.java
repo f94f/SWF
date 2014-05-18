@@ -23,6 +23,8 @@ public abstract class _InventarioMasterLogicService implements _IInventarioMaste
         InventarioDTO persistedInventarioDTO = inventarioPersistance.createInventario(inventario.getInventarioEntity());
         if (inventario.getCreateItem() != null) {
             for (ItemDTO itemDTO : inventario.getCreateItem()) {
+                itemDTO.setEnBodega(true);
+                itemDTO.setSalioDeBodega(false);
                 ItemDTO persistedItemDTO = itemPersistance.createItem(itemDTO);
                 InventarioItemEntity inventarioItemEntity = new InventarioItemEntity(persistedInventarioDTO.getId(), persistedItemDTO.getId());
                 inventarioMasterPersistance.createInventarioItem(inventarioItemEntity);
@@ -31,6 +33,8 @@ public abstract class _InventarioMasterLogicService implements _IInventarioMaste
         // update item
         if (inventario.getUpdateItem() != null) {
             for (ItemDTO itemDTO : inventario.getUpdateItem()) {
+                itemDTO.setEnBodega(true);
+                itemDTO.setSalioDeBodega(false);
                 itemPersistance.updateItem(itemDTO);
                 InventarioItemEntity inventarioItemEntity = new InventarioItemEntity(persistedInventarioDTO.getId(), itemDTO.getId());
                 inventarioMasterPersistance.createInventarioItem(inventarioItemEntity);
@@ -54,12 +58,17 @@ public abstract class _InventarioMasterLogicService implements _IInventarioMaste
         // delete item
         if (inventario.getDeleteItem() != null) {
             for (ItemDTO itemDTO : inventario.getDeleteItem()) {
+                itemDTO.setEnBodega(false);
+                itemDTO.setSalioDeBodega(true);
+                itemPersistance.updateItem(itemDTO);
                 inventarioMasterPersistance.deleteInventarioItem(inventario.getInventarioEntity().getId(), itemDTO.getId());
             }
         }
         // persist new item
         if (inventario.getCreateItem() != null) {
             for (ItemDTO itemDTO : inventario.getCreateItem()) {
+                itemDTO.setEnBodega(true);
+                itemDTO.setSalioDeBodega(false);
                 InventarioItemEntity inventarioItemEntity = new InventarioItemEntity(inventario.getInventarioEntity().getId(), itemDTO.getId());
                 inventarioMasterPersistance.createInventarioItem(inventarioItemEntity);
             }
@@ -68,6 +77,8 @@ public abstract class _InventarioMasterLogicService implements _IInventarioMaste
         if (inventario.getUpdateItem() != null) {
             for (ItemDTO itemDTO : inventario.getUpdateItem()) {
                 inventarioMasterPersistance.deleteInventarioItem(inventario.getInventarioEntity().getId(), itemDTO.getId());
+                itemDTO.setEnBodega(true);
+                itemDTO.setSalioDeBodega(false);
                 itemPersistance.updateItem(itemDTO);
                 InventarioItemEntity inventarioItemEntity = new InventarioItemEntity(inventario.getId(), itemDTO.getId());
                 inventarioMasterPersistance.createInventarioItem(inventarioItemEntity);

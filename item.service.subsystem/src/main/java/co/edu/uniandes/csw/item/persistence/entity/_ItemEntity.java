@@ -20,8 +20,9 @@ public abstract class _ItemEntity {
 	private Date fechaCaducidad;
 	private Boolean reservado;
 	private String motivoIngreso;
-	private String motivoSalid;
+	private String motivoSalida;
 	private Boolean enBodega;
+        private Boolean salioDeBodega;
 
 	public Long getId(){
 		return id;
@@ -58,12 +59,12 @@ public abstract class _ItemEntity {
 	public void setMotivoIngreso(String motivoIngreso){
 		this.motivoIngreso = motivoIngreso;
 	}
-	public String getMotivoSalid(){
-		return motivoSalid;
+	public String getMotivoSalida(){
+		return motivoSalida;
 	}
 	
-	public void setMotivoSalid(String motivoSalid){
-		this.motivoSalid = motivoSalid;
+	public void setMotivoSalida(String motivoSalida){
+		this.motivoSalida = motivoSalida;
 	}
 	public Boolean getEnBodega(){
 		return enBodega;
@@ -72,4 +73,11 @@ public abstract class _ItemEntity {
 	public void setEnBodega(Boolean enBodega){
 		this.enBodega = enBodega;
 	}
+        public Boolean getSalioDeBodega() {
+		return salioDeBodega;
+	}
+        
+        public void setSalioDeBodega(boolean saliodebodega) {
+            this.salioDeBodega = saliodebodega;
+        }
 }

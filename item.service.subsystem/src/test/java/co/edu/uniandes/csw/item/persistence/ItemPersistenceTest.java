@@ -75,7 +75,7 @@ public class ItemPersistenceTest {
 			entity.setFechaCaducidad(generateRandom(Date.class));
 			entity.setReservado(generateRandom(Boolean.class));
 			entity.setMotivoIngreso(generateRandom(String.class));
-			entity.setMotivoSalid(generateRandom(String.class));
+			entity.setMotivoSalida(generateRandom(String.class));
 			entity.setEnBodega(generateRandom(Boolean.class));
 			em.persist(entity);
 			data.add(entity);
@@ -89,7 +89,7 @@ public class ItemPersistenceTest {
 		dto.setFechaCaducidad(generateRandom(Date.class));
 		dto.setReservado(generateRandom(Boolean.class));
 		dto.setMotivoIngreso(generateRandom(String.class));
-		dto.setMotivoSalid(generateRandom(String.class));
+		dto.setMotivoSalida(generateRandom(String.class));
 		dto.setEnBodega(generateRandom(Boolean.class));
 		
 		
@@ -103,7 +103,7 @@ public class ItemPersistenceTest {
 		Assert.assertEquals(dto.getFechaCaducidad(), entity.getFechaCaducidad());	
 		Assert.assertEquals(dto.getReservado(), entity.getReservado());	
 		Assert.assertEquals(dto.getMotivoIngreso(), entity.getMotivoIngreso());	
-		Assert.assertEquals(dto.getMotivoSalid(), entity.getMotivoSalid());	
+		Assert.assertEquals(dto.getMotivoSalida(), entity.getMotivoSalida());	
 		Assert.assertEquals(dto.getEnBodega(), entity.getEnBodega());	
 	}
 	
@@ -131,7 +131,7 @@ public class ItemPersistenceTest {
 		Assert.assertEquals(entity.getFechaCaducidad(), dto.getFechaCaducidad());
 		Assert.assertEquals(entity.getReservado(), dto.getReservado());
 		Assert.assertEquals(entity.getMotivoIngreso(), dto.getMotivoIngreso());
-		Assert.assertEquals(entity.getMotivoSalid(), dto.getMotivoSalid());
+		Assert.assertEquals(entity.getMotivoSalida(), dto.getMotivoSalida());
 		Assert.assertEquals(entity.getEnBodega(), dto.getEnBodega());
         
 	}
@@ -154,7 +154,7 @@ public class ItemPersistenceTest {
 		dto.setFechaCaducidad(generateRandom(Date.class));
 		dto.setReservado(generateRandom(Boolean.class));
 		dto.setMotivoIngreso(generateRandom(String.class));
-		dto.setMotivoSalid(generateRandom(String.class));
+		dto.setMotivoSalida(generateRandom(String.class));
 		dto.setEnBodega(generateRandom(Boolean.class));
 		
 		
@@ -167,7 +167,7 @@ public class ItemPersistenceTest {
 		Assert.assertEquals(dto.getFechaCaducidad(), resp.getFechaCaducidad());	
 		Assert.assertEquals(dto.getReservado(), resp.getReservado());	
 		Assert.assertEquals(dto.getMotivoIngreso(), resp.getMotivoIngreso());	
-		Assert.assertEquals(dto.getMotivoSalid(), resp.getMotivoSalid());	
+		Assert.assertEquals(dto.getMotivoSalida(), resp.getMotivoSalida());	
 		Assert.assertEquals(dto.getEnBodega(), resp.getEnBodega());	
 	}
 	

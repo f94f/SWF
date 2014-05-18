@@ -70,8 +70,8 @@ public class ProductoLogicServiceTest {
 			pdto.setTipo(generateRandom(String.class));
 			pdto.setEsPerecedero(generateRandom(Boolean.class));
 			pdto.setPrecioPromedio(generateRandom(Double.class));
-			pdto.setTiempoPromedio(generateRandom(Double.class));
-			pdto.setCantidadPromedio(generateRandom(Double.class));
+			pdto.setTiempoPromedioEspera(generateRandom(Double.class));
+			pdto.setCantidadPromedioAPedir(generateRandom(Double.class));
 			pdto.setMinimoNivelInventario(generateRandom(Double.class));
 			pdto=productoPersistence.createProducto(pdto);
 			data.add(pdto);
@@ -85,8 +85,8 @@ public class ProductoLogicServiceTest {
 		ldto.setTipo(generateRandom(String.class));
 		ldto.setEsPerecedero(generateRandom(Boolean.class));
 		ldto.setPrecioPromedio(generateRandom(Double.class));
-		ldto.setTiempoPromedio(generateRandom(Double.class));
-		ldto.setCantidadPromedio(generateRandom(Double.class));
+		ldto.setTiempoPromedioEspera(generateRandom(Double.class));
+		ldto.setCantidadPromedioAPedir(generateRandom(Double.class));
 		ldto.setMinimoNivelInventario(generateRandom(Double.class));
 		
 		
@@ -100,8 +100,8 @@ public class ProductoLogicServiceTest {
 		Assert.assertEquals(ldto.getTipo(), pdto.getTipo());	
 		Assert.assertEquals(ldto.getEsPerecedero(), pdto.getEsPerecedero());	
 		Assert.assertEquals(ldto.getPrecioPromedio(), pdto.getPrecioPromedio());	
-		Assert.assertEquals(ldto.getTiempoPromedio(), pdto.getTiempoPromedio());	
-		Assert.assertEquals(ldto.getCantidadPromedio(), pdto.getCantidadPromedio());	
+		Assert.assertEquals(ldto.getTiempoPromedioEspera(), pdto.getTiempoPromedioEspera());	
+		Assert.assertEquals(ldto.getCantidadPromedioAPedir(), pdto.getCantidadPromedioAPedir());	
 		Assert.assertEquals(ldto.getMinimoNivelInventario(), pdto.getMinimoNivelInventario());	
 	}
 	
@@ -129,8 +129,8 @@ public class ProductoLogicServiceTest {
 		Assert.assertEquals(pdto.getTipo(), ldto.getTipo());
 		Assert.assertEquals(pdto.getEsPerecedero(), ldto.getEsPerecedero());
 		Assert.assertEquals(pdto.getPrecioPromedio(), ldto.getPrecioPromedio());
-		Assert.assertEquals(pdto.getTiempoPromedio(), ldto.getTiempoPromedio());
-		Assert.assertEquals(pdto.getCantidadPromedio(), ldto.getCantidadPromedio());
+		Assert.assertEquals(pdto.getTiempoPromedioEspera(), ldto.getTiempoPromedioEspera());
+		Assert.assertEquals(pdto.getCantidadPromedioAPedir(), ldto.getCantidadPromedioAPedir());
 		Assert.assertEquals(pdto.getMinimoNivelInventario(), ldto.getMinimoNivelInventario());
         
 	}
@@ -153,8 +153,8 @@ public class ProductoLogicServiceTest {
 		ldto.setTipo(generateRandom(String.class));
 		ldto.setEsPerecedero(generateRandom(Boolean.class));
 		ldto.setPrecioPromedio(generateRandom(Double.class));
-		ldto.setTiempoPromedio(generateRandom(Double.class));
-		ldto.setCantidadPromedio(generateRandom(Double.class));
+		ldto.setTiempoPromedioEspera(generateRandom(Double.class));
+		ldto.setCantidadPromedioAPedir(generateRandom(Double.class));
 		ldto.setMinimoNivelInventario(generateRandom(Double.class));
 		
 		
@@ -167,8 +167,8 @@ public class ProductoLogicServiceTest {
 		Assert.assertEquals(ldto.getTipo(), resp.getTipo());	
 		Assert.assertEquals(ldto.getEsPerecedero(), resp.getEsPerecedero());	
 		Assert.assertEquals(ldto.getPrecioPromedio(), resp.getPrecioPromedio());	
-		Assert.assertEquals(ldto.getTiempoPromedio(), resp.getTiempoPromedio());	
-		Assert.assertEquals(ldto.getCantidadPromedio(), resp.getCantidadPromedio());	
+		Assert.assertEquals(ldto.getTiempoPromedioEspera(), resp.getTiempoPromedioEspera());	
+		Assert.assertEquals(ldto.getCantidadPromedioAPedir(), resp.getCantidadPromedioAPedir());	
 		Assert.assertEquals(ldto.getMinimoNivelInventario(), resp.getMinimoNivelInventario());	
 	}
 	

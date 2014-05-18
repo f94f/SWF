@@ -18,8 +18,8 @@ public abstract class _ProductoConverter {
 				dto.setTipo(entity.getTipo());
 				dto.setEsPerecedero(entity.getEsPerecedero());
 				dto.setPrecioPromedio(entity.getPrecioPromedio());
-				dto.setTiempoPromedio(entity.getTiempoPromedio());
-				dto.setCantidadPromedio(entity.getCantidadPromedio());
+				dto.setTiempoPromedioEspera(entity.getTiempoPromedioEspera());
+				dto.setCantidadPromedioAPedir(entity.getCantidadPromedioAPedir());
 				dto.setMinimoNivelInventario(entity.getMinimoNivelInventario());
 			return dto;
 		}else{
@@ -35,8 +35,8 @@ public abstract class _ProductoConverter {
 			entity.setTipo(dto.getTipo());
 			entity.setEsPerecedero(dto.getEsPerecedero());
 			entity.setPrecioPromedio(dto.getPrecioPromedio());
-			entity.setTiempoPromedio(dto.getTiempoPromedio());
-			entity.setCantidadPromedio(dto.getCantidadPromedio());
+			entity.setTiempoPromedioEspera(dto.getTiempoPromedioEspera());
+			entity.setCantidadPromedioAPedir(dto.getCantidadPromedioAPedir());
 			entity.setMinimoNivelInventario(dto.getMinimoNivelInventario());
 			return entity;
 		}else {

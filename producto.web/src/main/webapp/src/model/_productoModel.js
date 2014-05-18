@@ -6,12 +6,17 @@ define([], function() {
 		 'tipo' : '' ,  
 		 'esPerecedero' :  false  ,  
 		 'precioPromedio' : '' ,  
-		 'tiempoPromedio' : '' ,  
-		 'cantidadPromedio' : '' ,  
+		 'tiempoPromedioEspera' : '' ,  
+		 'cantidadPromedioAPedir' : '' ,  
 		 'minimoNivelInventario' : ''        },
         initialize: function() {
         },
         getDisplay: function(name) {
+          
+         if(name=='esPerecedero'){
+                 return this.get('esPerecedero')==true?"Sí":"No";
+             } 
+          
          return this.get(name);
         }
     });

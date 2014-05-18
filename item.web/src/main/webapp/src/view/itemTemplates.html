@@ -23,7 +23,7 @@
 		<td><%= htmlEncode(item.getDisplay('fechaCaducidad')) %></td>
 		<td><%= htmlEncode(item.getDisplay('reservado')) %></td>
 		<td><%= htmlEncode(item.getDisplay('motivoIngreso')) %></td>
-		<td><%= htmlEncode(item.getDisplay('motivoSalid')) %></td>
+		<td><%= htmlEncode(item.getDisplay('motivoSalida')) %></td>
 		<td><%= htmlEncode(item.getDisplay('enBodega')) %></td>
     <td>
     <% if(showEdit) {%>
@@ -48,7 +48,7 @@
     <% }%>
 		<div class="form-group" >
 		<label for="name">Nombre</label>
-    	<input type="text" class="form-control" id="name" name="name" placeholder="Ingrese un nombre" value="<%= item.get('name') %>"/>	
+                <input type="text" class="form-control" id="name" name="name" placeholder="Ingrese el nombre" value="<%= item.get('name') %>"/>	
 		</div>
 		<div class="form-group" >
 			<label for="fechaCaducidad">Fecha de Caducidad</label>
@@ -59,22 +59,43 @@
     		<%= '</scr'+'ipt>' %>
 		</div>
 		<div class="form-group" >
-	    <label>
-    	  <input id="reservado" name="reservado" value="true" type="checkbox" <%= item.get('reservado')?'checked':'' %>> ¿Reservado?
-    	</label>
+                <label>
+                <input id="reservado" name="reservado" value="true" type="checkbox" <%= item.get('reservado')?'checked':'' %>> ¿Se encuentra reservado?
+                </label>
 		</div>
 		<div class="form-group" >
-		<label for="motivoIngreso">Motivo de Ingreso</label>
-    	<input type="text" class="form-control" id="motivoIngreso" name="motivoIngreso" placeholder="Seleccione un motivo" value="<%= item.get('motivoIngreso') %>"/>	
+                <% if(item.get('enBodega')==true) {%>
+                <label for="motivoIngreso">Motivo de ingreso</label>
+                <select class="form-control" id="motivoIngreso" name="motivoIngreso">
+                    <option  <%= item.get('motivoIngreso')=='Translado'?'selected':'' %> >Translado</option>
+                    <option  <%= item.get('motivoIngreso')=='Reaprovisionamiento'?'selected':'' %>>Reaprovisionamiento</option>
+                </select>
+                <% }%>
+                <% if(item.get('enBodega')==false) {%>
+                    <input id="motivoIngreso" name="motivoIngreso" value="<%= item.get('motivoIngreso') %>" type="hidden"> 
+                <% }%>
 		</div>
 		<div class="form-group" >
-		<label for="motivoSalid">Motivo de Salida</label>
-    	<input type="text" class="form-control" id="motivoSalid" name="motivoSalid" placeholder="Seleccione un motivo" value="<%= item.get('motivoSalid') %>"/>	
+		<% if(item.get('salioDeBodega')==true) {%>
+                <label for="motivoSalida">Motivo de salida</label>
+                <select class="form-control" id="motivoSalida" name="motivoSalida">
+                    <option  <%= item.get('motivoSalida')=='Despacho'?'selected':'' %> >Despacho</option>
+                    <option  <%= item.get('motivoIngreso')=='Translado a otra bodega'?'selected':'' %>>Translado a otra bodega</option>
+                    <option  <%= item.get('motivoIngreso')=='Perdida'?'selected':'' %>>Perdida</option>
+                    <option  <%= item.get('motivoIngreso')=='Robo'?'selected':'' %>>Robo</option>
+                </select>
+                <% }%>
+                <% if(item.get('salioDeBodega')==false) {%>
+                    <input id="motivoSalida" name="motivoSalida" value="<%= item.get('motivoSalida') %>" type="hidden"> 
+                <% }%>	
 		</div>
 		<div class="form-group" >
-	    <label>
-    	  <input id="enBodega" name="enBodega" value="true" type="checkbox" <%= item.get('enBodega')?'checked':'' %>> ¿En Bodega?
-    	</label>
+                <label>
+                    <input id="enBodega" name="enBodega" value="<%= item.get('enBodega') %>" type="hidden"> 
+                    </label>
+		</div>
+                <div class="form-group" >
+                    <input id="salioDeBodega" name="salioDeBodega" value="<%= item.get('salioDeBodega') %>" type="hidden">
 		</div>
     </form>
     </div>

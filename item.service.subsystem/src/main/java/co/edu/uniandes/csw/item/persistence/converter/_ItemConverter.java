@@ -18,8 +18,9 @@ public abstract class _ItemConverter {
 				dto.setFechaCaducidad(entity.getFechaCaducidad());
 				dto.setReservado(entity.getReservado());
 				dto.setMotivoIngreso(entity.getMotivoIngreso());
-				dto.setMotivoSalid(entity.getMotivoSalid());
+				dto.setMotivoSalida(entity.getMotivoSalida());
 				dto.setEnBodega(entity.getEnBodega());
+                                dto.setSalioDeBodega(entity.getSalioDeBodega());
 			return dto;
 		}else{
 			return null;
@@ -34,8 +35,9 @@ public abstract class _ItemConverter {
 			entity.setFechaCaducidad(dto.getFechaCaducidad());
 			entity.setReservado(dto.getReservado());
 			entity.setMotivoIngreso(dto.getMotivoIngreso());
-			entity.setMotivoSalid(dto.getMotivoSalid());
+			entity.setMotivoSalida(dto.getMotivoSalida());
 			entity.setEnBodega(dto.getEnBodega());
+                        entity.setSalioDeBodega(dto.getSalioDeBodega());
 			return entity;
 		}else {
 			return null;

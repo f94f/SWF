@@ -1,9 +1,9 @@
 define(['controller/selectionController', 'model/cacheModel', 'model/inventarioMasterModel', 'component/_CRUDComponent', 'controller/tabController', 'component/inventarioComponent',
- 'component/itemComponent'
- 
- ],function(SelectionController, CacheModel, InventarioMasterModel, CRUDComponent, TabController, InventarioComponent,
- ItemComponent
- ) {
+    'component/itemComponent'
+
+], function(SelectionController, CacheModel, InventarioMasterModel, CRUDComponent, TabController, InventarioComponent,
+        ItemComponent
+        ) {
     App.Component.InventarioMasterComponent = App.Component.BasicComponent.extend({
         initialize: function() {
             var self = this;
@@ -35,6 +35,8 @@ define(['controller/selectionController', 'model/cacheModel', 'model/inventarioM
                 self.model.set('createItem', []);
                 self.model.set('updateItem', []);
                 self.model.set('deleteItem', []);
+                var hayItemsSinMI = false;
+                var msj = "Por favor ingrese el motivo de ingreso de los siguientes items: ";
                 for (var i = 0; i < itemModels.models.length; i++) {
                     var m = itemModels.models[i];
                     var modelCopy = m.clone();
@@ -45,11 +47,32 @@ define(['controller/selectionController', 'model/cacheModel', 'model/inventarioM
                     } else if (m.isUpdated()) {
                         self.model.get('updateItem').push(modelCopy.toJSON());
                     }
+                    if (m.attributes.motivoIngreso === "No ha ingresado aún a la bodega")
+                    {
+                        hayItemsSinMI = true;
+                        msj += "\n" + m.attributes.name
+                    }
                 }
+                
+                if(hayItemsSinMI===true)
+                {
+                    alert(msj);
+                }
+
+                var hayItemsElim = false;
+                var msj2 = "Por favor ingrese el motivo de salida de los siguientes items: ";
                 for (var i = 0; i < itemModels.deletedModels.length; i++) {
                     var m = itemModels.deletedModels[i];
+                    hayItemsElim=true;
+                    msj2 += "\n"+m.attributes.name;
                     self.model.get('deleteItem').push(m.toJSON());
                 }
+                
+                if(hayItemsElim===true)
+                {
+                    alert(msj2);
+                }
+                
                 self.model.save({}, {
                     success: function() {
                         uComponent.componentController.list();
@@ -76,7 +99,7 @@ define(['controller/selectionController', 'model/cacheModel', 'model/inventarioM
             App.Model.InventarioMasterModel.prototype.urlRoot = this.configuration.context;
             var options = {
                 success: function() {
-					self.itemComponent = new ItemComponent();
+                    self.itemComponent = new ItemComponent();
                     self.itemModels = App.Utils.convertToModel(App.Utils.createCacheModel(App.Model.ItemModel), self.model.get('listItem'));
                     self.itemComponent.initialize({
                         modelClass: App.Utils.createCacheModel(App.Model.ItemModel),
@@ -88,9 +111,9 @@ define(['controller/selectionController', 'model/cacheModel', 'model/inventarioM
                     });
                     self.itemToolbarModel = self.itemComponent.toolbarModel.set(App.Utils.Constans.containmentToolbarConfiguration);
                     self.itemComponent.setToolbarModel(self.itemToolbarModel);
-                	
-                     
-                
+
+
+
                     Backbone.on(self.itemComponent.componentId + '-toolbar-add', function() {
                         var selection = new App.Controller.SelectionController();
                         App.Utils.getComponentList('itemComponent', function(componentName, model) {
@@ -106,13 +129,14 @@ define(['controller/selectionController', 'model/cacheModel', 'model/inventarioM
                         var cacheItemModel = App.Utils.createCacheModel(App.Model.ItemModel);
                         models = App.Utils.convertToModel(cacheItemModel, models);
                         for (var i = 0; i < models.length; i++) {
-                        	var model = models[i];
-                        	model.setCacheList(self.itemComponent.componentController.itemModelList);
-                        	model.save('',{});
+                            var model = models[i];
+                            model.setCacheList(self.itemComponent.componentController.itemModelList);
+                            model.save('', {});
                         }
-                        self.itemComponent.componentController.showEdit=false;
+
+                        self.itemComponent.componentController.showEdit = false;
                         self.itemComponent.componentController.list();
-                        
+
                     });
                     $('#tabs').show();
                 },

@@ -13,8 +13,9 @@ public abstract class _ItemDTO {
 	private Date fechaCaducidad;
 	private Boolean reservado;
 	private String motivoIngreso;
-	private String motivoSalid;
+	private String motivoSalida;
 	private Boolean enBodega;
+        private Boolean salioDeBodega;
 
 	public Long getId() {
 		return id;
@@ -51,12 +52,12 @@ public abstract class _ItemDTO {
 	public void setMotivoIngreso(String motivoingreso) {
 		this.motivoIngreso = motivoingreso;
 	}
-	public String getMotivoSalid() {
-		return motivoSalid;
+	public String getMotivoSalida() {
+		return motivoSalida;
 	}
  
-	public void setMotivoSalid(String motivosalid) {
-		this.motivoSalid = motivosalid;
+	public void setMotivoSalida(String motivosalida) {
+		this.motivoSalida = motivosalida;
 	}
 	public Boolean getEnBodega() {
 		return enBodega;
@@ -65,5 +66,11 @@ public abstract class _ItemDTO {
 	public void setEnBodega(Boolean enbodega) {
 		this.enBodega = enbodega;
 	}
-	
+        public Boolean getSalioDeBodega() {
+		return salioDeBodega;
+	}
+        
+        public void setSalioDeBodega(boolean saliodebodega) {
+            this.salioDeBodega = saliodebodega;
+        }
 }

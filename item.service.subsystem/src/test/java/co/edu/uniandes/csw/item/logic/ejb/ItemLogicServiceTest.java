@@ -70,7 +70,7 @@ public class ItemLogicServiceTest {
 			pdto.setFechaCaducidad(generateRandom(Date.class));
 			pdto.setReservado(generateRandom(Boolean.class));
 			pdto.setMotivoIngreso(generateRandom(String.class));
-			pdto.setMotivoSalid(generateRandom(String.class));
+			pdto.setMotivoSalida(generateRandom(String.class));
 			pdto.setEnBodega(generateRandom(Boolean.class));
 			pdto=itemPersistence.createItem(pdto);
 			data.add(pdto);
@@ -84,7 +84,7 @@ public class ItemLogicServiceTest {
 		ldto.setFechaCaducidad(generateRandom(Date.class));
 		ldto.setReservado(generateRandom(Boolean.class));
 		ldto.setMotivoIngreso(generateRandom(String.class));
-		ldto.setMotivoSalid(generateRandom(String.class));
+		ldto.setMotivoSalida(generateRandom(String.class));
 		ldto.setEnBodega(generateRandom(Boolean.class));
 		
 		
@@ -98,7 +98,7 @@ public class ItemLogicServiceTest {
 		Assert.assertEquals(ldto.getFechaCaducidad(), pdto.getFechaCaducidad());	
 		Assert.assertEquals(ldto.getReservado(), pdto.getReservado());	
 		Assert.assertEquals(ldto.getMotivoIngreso(), pdto.getMotivoIngreso());	
-		Assert.assertEquals(ldto.getMotivoSalid(), pdto.getMotivoSalid());	
+		Assert.assertEquals(ldto.getMotivoSalida(), pdto.getMotivoSalida());	
 		Assert.assertEquals(ldto.getEnBodega(), pdto.getEnBodega());	
 	}
 	
@@ -126,7 +126,7 @@ public class ItemLogicServiceTest {
 		Assert.assertEquals(pdto.getFechaCaducidad(), ldto.getFechaCaducidad());
 		Assert.assertEquals(pdto.getReservado(), ldto.getReservado());
 		Assert.assertEquals(pdto.getMotivoIngreso(), ldto.getMotivoIngreso());
-		Assert.assertEquals(pdto.getMotivoSalid(), ldto.getMotivoSalid());
+		Assert.assertEquals(pdto.getMotivoSalida(), ldto.getMotivoSalida());
 		Assert.assertEquals(pdto.getEnBodega(), ldto.getEnBodega());
         
 	}
@@ -149,7 +149,7 @@ public class ItemLogicServiceTest {
 		ldto.setFechaCaducidad(generateRandom(Date.class));
 		ldto.setReservado(generateRandom(Boolean.class));
 		ldto.setMotivoIngreso(generateRandom(String.class));
-		ldto.setMotivoSalid(generateRandom(String.class));
+		ldto.setMotivoSalida(generateRandom(String.class));
 		ldto.setEnBodega(generateRandom(Boolean.class));
 		
 		
@@ -162,7 +162,7 @@ public class ItemLogicServiceTest {
 		Assert.assertEquals(ldto.getFechaCaducidad(), resp.getFechaCaducidad());	
 		Assert.assertEquals(ldto.getReservado(), resp.getReservado());	
 		Assert.assertEquals(ldto.getMotivoIngreso(), resp.getMotivoIngreso());	
-		Assert.assertEquals(ldto.getMotivoSalid(), resp.getMotivoSalid());	
+		Assert.assertEquals(ldto.getMotivoSalida(), resp.getMotivoSalida());	
 		Assert.assertEquals(ldto.getEnBodega(), resp.getEnBodega());	
 	}
 	

@@ -19,8 +19,8 @@ public abstract class _ProductoEntity {
 	private String tipo;
 	private Boolean esPerecedero;
 	private Double precioPromedio;
-	private Double tiempoPromedio;
-	private Double cantidadPromedio;
+	private Double tiempoPromedioEspera;
+	private Double cantidadPromedioAPedir;
 	private Double minimoNivelInventario;
 
 	public Long getId(){
@@ -58,19 +58,19 @@ public abstract class _ProductoEntity {
 	public void setPrecioPromedio(Double precioPromedio){
 		this.precioPromedio = precioPromedio;
 	}
-	public Double getTiempoPromedio(){
-		return tiempoPromedio;
+	public Double getTiempoPromedioEspera(){
+		return tiempoPromedioEspera;
 	}
 	
-	public void setTiempoPromedio(Double tiempoPromedio){
-		this.tiempoPromedio = tiempoPromedio;
+	public void setTiempoPromedioEspera(Double tiempoPromedioEspera){
+		this.tiempoPromedioEspera = tiempoPromedioEspera;
 	}
-	public Double getCantidadPromedio(){
-		return cantidadPromedio;
+	public Double getCantidadPromedioAPedir(){
+		return cantidadPromedioAPedir;
 	}
 	
-	public void setCantidadPromedio(Double cantidadPromedio){
-		this.cantidadPromedio = cantidadPromedio;
+	public void setCantidadPromedioAPedir(Double cantidadPromedioAPedir){
+		this.cantidadPromedioAPedir = cantidadPromedioAPedir;
 	}
 	public Double getMinimoNivelInventario(){
 		return minimoNivelInventario;
