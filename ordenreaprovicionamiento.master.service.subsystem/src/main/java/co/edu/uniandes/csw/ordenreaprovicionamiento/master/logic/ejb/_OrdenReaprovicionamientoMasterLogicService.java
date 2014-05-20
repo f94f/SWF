@@ -11,7 +11,20 @@ import co.edu.uniandes.csw.ordenreaprovicionamiento.master.persistence.api.IOrde
 import co.edu.uniandes.csw.ordenreaprovicionamiento.master.persistence.entity.OrdenReaprovicionamientoProveedorEntity;
 import co.edu.uniandes.csw.ordenreaprovicionamiento.master.persistence.entity.OrdenReaprovicionamientoProductoEntity;
 import co.edu.uniandes.csw.ordenreaprovicionamiento.persistence.api.IOrdenReaprovicionamientoPersistence;
+import co.edu.uniandes.csw.proveedor.persistence.entity.ProveedorEntity;
+import java.io.PrintWriter;
+import java.util.Date;
+import java.util.Properties;
 import javax.inject.Inject;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 public abstract class _OrdenReaprovicionamientoMasterLogicService implements _IOrdenReaprovicionamientoMasterLogicService {
 
@@ -23,6 +36,9 @@ public abstract class _OrdenReaprovicionamientoMasterLogicService implements _IO
     protected IProveedorPersistence proveedorPersistance;
     @Inject
     protected IProductoPersistence productoPersistance;
+    
+    @PersistenceContext(unitName = "OrdenReaprovicionamientoMasterPU")
+    protected EntityManager entityManager;
 
     public OrdenReaprovicionamientoMasterDTO createMasterOrdenReaprovicionamiento(OrdenReaprovicionamientoMasterDTO ordenreaprovicionamiento) {
         OrdenReaprovicionamientoDTO persistedOrdenReaprovicionamientoDTO = ordenreaprovicionamientoPersistance.createOrdenReaprovicionamiento(ordenreaprovicionamiento.getOrdenReaprovicionamientoEntity());
@@ -44,7 +60,23 @@ public abstract class _OrdenReaprovicionamientoMasterLogicService implements _IO
         if (ordenreaprovicionamiento.getUpdateProveedor() != null) {
             for (ProveedorDTO proveedorDTO : ordenreaprovicionamiento.getUpdateProveedor()) {
                 proveedorPersistance.updateProveedor(proveedorDTO);
+                String productodscm= persistedOrdenReaprovicionamientoDTO.getNombreProducto();
+                String cantidad = ""+persistedOrdenReaprovicionamientoDTO.getCantidad();
+                Date fecha =persistedOrdenReaprovicionamientoDTO.getFecha();
+                
                 OrdenReaprovicionamientoProveedorEntity ordenreaprovicionamientoProveedorEntity = new OrdenReaprovicionamientoProveedorEntity(persistedOrdenReaprovicionamientoDTO.getId(), proveedorDTO.getId());
+                
+                Long  id =ordenreaprovicionamientoProveedorEntity.getProveedorId();
+        
+                ProveedorEntity proveedor=entityManager.find(ProveedorEntity.class, id);
+                
+                String mail = proveedor.getEmail();
+                String nombre = proveedor.getName();
+                
+                String txt = productodscm +"/n" + cantidad +"/n" + fecha.toGMTString()+"/n" +mail+"/n"+nombre;
+                enviarCorreo(mail, nombre, cantidad, productodscm, fecha);
+                
+                
                 ordenreaprovicionamientoMasterPersistance.createOrdenReaprovicionamientoProveedor(ordenreaprovicionamientoProveedorEntity);
             }
         }
@@ -118,4 +150,58 @@ public abstract class _OrdenReaprovicionamientoMasterLogicService implements _IO
             }
         }
     }
+    public void enviarCorreo(String userDestino, String persona, String cantidad, String producto, Date fecha) 
+	{
+            
+		Properties props = new Properties();
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.host", "smtp.gmail.com");
+		props.put("mail.smtp.port", "587");
+ 
+		Session session = Session.getInstance(props, new javax.mail.Authenticator() 
+		{
+			protected PasswordAuthentication getPasswordAuthentication()
+			{
+				return new PasswordAuthentication("inventariouniandes@gmail.com", "inventar");
+			}
+		  });
+ 
+		try {
+ 
+			Message message = new MimeMessage(session);
+			message.setFrom(new InternetAddress("inventariouniandes@gmail.com"));
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(userDestino));
+			message.setSubject("Nuevo Pedido");
+                        String text="";
+                        if( userDestino != null )
+                        {
+                            text = text + userDestino+"  -  ";
+                        }
+                        else
+                        {
+                            text = text +"  - userDestino : null ";
+                        }
+                        
+                        if( persona != null )
+                        {
+                            text = text + persona+"  -  ";
+                        }
+                        else
+                        {
+                            text = text +"  - persona : null ";
+                        }
+			message.setText("Hola, "+persona+"\n"+"Tienes un nuevo Pedido: \n Producto: "+producto+"\n Cantidad: "+cantidad+"\n Fecha: "+fecha.toGMTString() +"\n \n Sistema Inventario Uniandes");
+ 
+			Transport.send(message);
+ 
+			System.out.println("Done");
+
+ 
+		} 
+		catch (MessagingException e) 
+		{
+			throw new RuntimeException(e);
+		}
+	}
 }

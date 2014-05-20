@@ -27,6 +27,12 @@
             <scope>test</scope>
             <optional>true</optional>
         </dependency>
+        
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.4</version>
+        </dependency>
 
         <!-- Arquillian -->
         <dependency>
@@ -47,6 +53,7 @@
             <groupId>co.edu.uniandes.csw</groupId>
             <artifactId>ordenreaprovicionamiento.service.subsystem</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>co.edu.uniandes.csw</groupId>
