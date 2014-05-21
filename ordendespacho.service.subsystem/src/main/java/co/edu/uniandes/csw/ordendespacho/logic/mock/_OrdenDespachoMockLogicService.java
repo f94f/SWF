@@ -5,6 +5,7 @@ import java.util.List;
 
 import co.edu.uniandes.csw.ordendespacho.logic.dto.OrdenDespachoDTO;
 import co.edu.uniandes.csw.ordendespacho.logic.api._IOrdenDespachoLogicService;
+import co.edu.uniandes.csw.ordendespacho.persistence.OrdenDespachoPersistence;
 
 public abstract class _OrdenDespachoMockLogicService implements _IOrdenDespachoLogicService {
 
@@ -54,4 +55,9 @@ public abstract class _OrdenDespachoMockLogicService implements _IOrdenDespachoL
 			data.add(ordenDespacho);
 		} 
 	}	
+        
+        public List<OrdenDespachoDTO> searchOrdenDespacho(String desc) {
+            OrdenDespachoPersistence q = new OrdenDespachoPersistence();
+            return q.searchOrdenDespacho(desc);
+        }
 }

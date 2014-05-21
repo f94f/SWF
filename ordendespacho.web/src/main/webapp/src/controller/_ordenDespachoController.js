@@ -1,4 +1,4 @@
-define(['model/ordenDespachoModel'], function(ordenDespachoModel) {
+define(['model/ordenDespachoModel','delegate/_ordenDespachoDelegate'], function(ordenDespachoModel) {
     App.Controller._OrdenDespachoController = Backbone.View.extend({
         initialize: function(options) {
             this.modelClass = options.modelClass;
@@ -7,6 +7,7 @@ define(['model/ordenDespachoModel'], function(ordenDespachoModel) {
             this.showDelete = true;
             this.editTemplate = _.template($('#ordenDespacho').html());
             this.listTemplate = _.template($('#ordenDespachoList').html());
+            this.searchTemplate = _.template($('#ordenDespachoSearch').html() + $('#ordenDespachoList').html());
             if (!options || !options.componentId) {
                 this.componentId = _.random(0, 100) + "";
             }else{
@@ -30,6 +31,12 @@ define(['model/ordenDespachoModel'], function(ordenDespachoModel) {
             });
             Backbone.on(this.componentId + '-' + 'ordenDespacho-save', function(params) {
                 self.save(params);
+            });
+            Backbone.on(this.componentId + '-' + 'toolbar-search', function(params) {
+                self.search(params);
+            });
+            Backbone.on(this.componentId + '-ordenDespacho-search', function(params) {
+                self.ordenDespachoSearch(params);
             });
             if(self.postInit){
             	self.postInit(options);
@@ -153,7 +160,41 @@ define(['model/ordenDespachoModel'], function(ordenDespachoModel) {
 				}));
                 self.$el.slideDown("fast");
             });
-        }
+        },
+        search: function() {
+            this.currentOrdenDespachoModel = new App.Model.OrdenDespachoModel();
+            this.ordenDespachoModelList = new this.listModelClass();
+            this._renderSearch();
+        },
+        ordenDespachoSearch: function(params) {
+            var self = this;
+            var model = $('#' + this.componentId + '-ordenDespachoSearch').serializeObject();
+            this.currentOrdenDespachoModel.set(model);
+            App.Delegate.OrdenDespachoDelegate.search(self.currentOrdenDespachoModel, function(data) {
+                self.ordenDespachoModelList = new App.Model.OrdenDespachoList();
+                _.each(data, function(d) {
+                    var model = new App.Model.OrdenDespachoModel(d);
+                    self.ordenDespachoModelList.models.push(model);
+                });
+                self._renderSearch(params);
+            }, function(data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'ordenDespacho-search', view: self, id: '', data: data, error: {textResponse: 'Error in ordenDespacho search'}});
+            });
+        },
+ 
+        _renderSearch: function(params) {
+ 
+            var self = this;
+            this.$el.slideUp("fast", function() {
+                self.$el.html(self.searchTemplate({componentId: self.componentId,
+                    ordenDespachos: self.ordenDespachoModelList.models,
+                    ordenDespacho: self.currentOrdenDespachoModel,
+                    showEdit: false,
+                    showDelete: false
+                }));
+                self.$el.slideDown("fast");
+            });
+        },
     });
     return App.Controller._OrdenDespachoController;
 });

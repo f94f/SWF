@@ -12,5 +12,6 @@ public interface _IOrdenDespachoLogicService {
 	public OrdenDespachoDTO getOrdenDespacho(Long id);
 	public void deleteOrdenDespacho(Long id);
 	public void updateOrdenDespacho(OrdenDespachoDTO detail);
+        public List<OrdenDespachoDTO> searchOrdenDespacho(String desc);
 	
 }
