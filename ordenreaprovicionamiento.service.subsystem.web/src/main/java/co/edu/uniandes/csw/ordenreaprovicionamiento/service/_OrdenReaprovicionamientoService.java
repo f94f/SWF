@@ -46,5 +46,11 @@ public abstract class _OrdenReaprovicionamientoService {
 	public void updateOrdenReaprovicionamiento(@PathParam("id") Long id, OrdenReaprovicionamientoDTO ordenReaprovicionamiento){
 		ordenReaprovicionamientoLogicService.updateOrdenReaprovicionamiento(ordenReaprovicionamiento);
 	}
+        
+        @POST
+        @Path("/search")
+        public List<OrdenReaprovicionamientoDTO> searchOrdenReaprovicionamiento(String desc){
+        return this.ordenReaprovicionamientoLogicService.searchOrdenReaprovicionamiento(desc);
+        }
 	
 }
