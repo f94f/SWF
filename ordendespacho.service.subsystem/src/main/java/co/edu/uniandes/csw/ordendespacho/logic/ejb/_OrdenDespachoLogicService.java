@@ -30,5 +30,9 @@ public abstract class _OrdenDespachoLogicService implements _IOrdenDespachoLogic
 
 	public void updateOrdenDespacho(OrdenDespachoDTO ordenDespacho){
 	    persistance.updateOrdenDespacho(ordenDespacho); 
-	}	
+	}
+        
+        public List<OrdenDespachoDTO> searchOrdenDespacho(String desc){
+		return persistance.searchOrdenDespacho(desc); 
+	}
 }

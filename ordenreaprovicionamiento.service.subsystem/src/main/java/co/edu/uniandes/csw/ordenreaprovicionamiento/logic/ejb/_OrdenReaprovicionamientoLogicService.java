@@ -30,5 +30,9 @@ public abstract class _OrdenReaprovicionamientoLogicService implements _IOrdenRe
 
 	public void updateOrdenReaprovicionamiento(OrdenReaprovicionamientoDTO ordenReaprovicionamiento){
 	    persistance.updateOrdenReaprovicionamiento(ordenReaprovicionamiento); 
-	}	
+	}
+        
+        public List<OrdenReaprovicionamientoDTO> searchOrdenReaprovicionamiento(String desc){
+		return persistance.searchOrdenReaprovicionamiento(desc); 
+	}
 }

@@ -42,5 +42,18 @@ public abstract class _OrdenReaprovicionamientoPersistence implements _IOrdenRea
 		OrdenReaprovicionamientoEntity entity=entityManager.merge(OrdenReaprovicionamientoConverter.persistenceDTO2Entity(detail));
 		OrdenReaprovicionamientoConverter.entity2PersistenceDTO(entity);
 	}
+        
+        public List<OrdenReaprovicionamientoDTO> searchOrdenReaprovicionamiento(String descr) {    
+            descr = descr.split("\"description\":\"")[1];
+            descr = descr.split("\"")[0];
+            System.out.println("Param: " + descr);
+            Query q = entityManager.createQuery("select u from OrdenReaprovicionamientoEntity u where u.name like '%" + descr + "%'");
+            
+            List list = q.getResultList();
+            if (list.size() != 0) {
+                return OrdenReaprovicionamientoConverter.entity2PersistenceDTOList(list);
+            }
+            return null;
+         }
 
 }

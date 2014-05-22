@@ -68,3 +68,20 @@
     </form>
     </div>
 </script> 
+
+<script type="text/template" id="ordenDespachoSearch">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-ordenDespachoSearch">
+        <div class="form-group" >
+            <label for="name">Name: </label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter value"/>	
+	</div> 
+    </form>
+    <button id="<%= componentId%>-ordenDespacho-searchButton" 
+        onclick="Backbone.trigger('<%= componentId %>-ordenDespacho-search',{}); return false" 
+        type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+    </div>
+ 
+</script>
