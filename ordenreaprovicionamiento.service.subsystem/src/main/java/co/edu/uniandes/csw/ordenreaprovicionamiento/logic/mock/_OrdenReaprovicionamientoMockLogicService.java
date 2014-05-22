@@ -5,6 +5,7 @@ import java.util.List;
 
 import co.edu.uniandes.csw.ordenreaprovicionamiento.logic.dto.OrdenReaprovicionamientoDTO;
 import co.edu.uniandes.csw.ordenreaprovicionamiento.logic.api._IOrdenReaprovicionamientoLogicService;
+import co.edu.uniandes.csw.ordenreaprovicionamiento.persistence.OrdenReaprovicionamientoPersistence;
 
 public abstract class _OrdenReaprovicionamientoMockLogicService implements _IOrdenReaprovicionamientoLogicService {
 
@@ -54,4 +55,9 @@ public abstract class _OrdenReaprovicionamientoMockLogicService implements _IOrd
 			data.add(ordenReaprovicionamiento);
 		} 
 	}	
+        
+        public List<OrdenReaprovicionamientoDTO> searchOrdenReaprovicionamiento(String desc) {
+            OrdenReaprovicionamientoPersistence q = new OrdenReaprovicionamientoPersistence();
+            return q.searchOrdenReaprovicionamiento(desc);
+        }
 }

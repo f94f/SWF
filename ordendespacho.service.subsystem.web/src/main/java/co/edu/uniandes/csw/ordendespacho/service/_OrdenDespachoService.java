@@ -46,5 +46,11 @@ public abstract class _OrdenDespachoService {
 	public void updateOrdenDespacho(@PathParam("id") Long id, OrdenDespachoDTO ordenDespacho){
 		ordenDespachoLogicService.updateOrdenDespacho(ordenDespacho);
 	}
+        
+        @POST
+        @Path("/search")
+        public List<OrdenDespachoDTO> searchOrdenDespacho(String desc){
+        return this.ordenDespachoLogicService.searchOrdenDespacho(desc);
+        }
 	
 }

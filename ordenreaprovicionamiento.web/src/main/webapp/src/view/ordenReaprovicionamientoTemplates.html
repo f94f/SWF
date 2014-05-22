@@ -62,3 +62,20 @@
     </form>
     </div>
 </script> 
+
+<script type="text/template" id="ordenReaprovicionamientoSearch">
+    <div class="form-group">
+    <form role="form" id="<%= componentId %>-ordenReaprovicionamientoSearch">
+        <div class="form-group" >
+            <label for="name">Name: </label>
+            <input type="text" class="form-control" id="description" name="description" placeholder="Enter value"/>	
+	</div> 
+    </form>
+    <button id="<%= componentId%>-ordenReaprovicionamiento-searchButton" 
+        onclick="Backbone.trigger('<%= componentId %>-ordenReaprovicionamiento-search',{}); return false" 
+        type="button" class="btn btn-default">
+            <span class="glyphicon glyphicon-search"></span> Search
+    </button>
+    </div>
+ 
+</script>

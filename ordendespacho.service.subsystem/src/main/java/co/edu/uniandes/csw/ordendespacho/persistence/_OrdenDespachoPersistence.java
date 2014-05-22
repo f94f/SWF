@@ -42,5 +42,18 @@ public abstract class _OrdenDespachoPersistence implements _IOrdenDespachoPersis
 		OrdenDespachoEntity entity=entityManager.merge(OrdenDespachoConverter.persistenceDTO2Entity(detail));
 		OrdenDespachoConverter.entity2PersistenceDTO(entity);
 	}
+        
+        public List<OrdenDespachoDTO> searchOrdenDespacho(String descr) {    
+            descr = descr.split("\"description\":\"")[1];
+            descr = descr.split("\"")[0];
+            System.out.println("Param: " + descr);
+            Query q = entityManager.createQuery("select u from OrdenDespachoEntity u where u.name like '%" + descr + "%'");
+            
+            List list = q.getResultList();
+            if (list.size() != 0) {
+                return OrdenDespachoConverter.entity2PersistenceDTOList(list);
+            }
+            return null;
+         }
 
 }

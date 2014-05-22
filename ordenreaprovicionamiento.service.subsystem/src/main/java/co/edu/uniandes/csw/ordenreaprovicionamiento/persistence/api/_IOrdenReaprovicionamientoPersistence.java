@@ -12,5 +12,6 @@ public interface _IOrdenReaprovicionamientoPersistence {
 	public OrdenReaprovicionamientoDTO getOrdenReaprovicionamiento(Long id);
 	public void deleteOrdenReaprovicionamiento(Long id);
 	public void updateOrdenReaprovicionamiento(OrdenReaprovicionamientoDTO detail);
+        public List<OrdenReaprovicionamientoDTO> searchOrdenReaprovicionamiento(String desc);
 	
 }

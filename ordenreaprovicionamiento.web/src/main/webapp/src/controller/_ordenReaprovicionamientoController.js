@@ -1,4 +1,4 @@
-define(['model/ordenReaprovicionamientoModel'], function(ordenReaprovicionamientoModel) {
+define(['model/ordenReaprovicionamientoModel','delegate/_ordenReaprovicionamientoDelegate'], function(ordenReaprovicionamientoModel) {
     App.Controller._OrdenReaprovicionamientoController = Backbone.View.extend({
         initialize: function(options) {
             this.modelClass = options.modelClass;
@@ -7,6 +7,7 @@ define(['model/ordenReaprovicionamientoModel'], function(ordenReaprovicionamient
             this.showDelete = true;
             this.editTemplate = _.template($('#ordenReaprovicionamiento').html());
             this.listTemplate = _.template($('#ordenReaprovicionamientoList').html());
+            this.searchTemplate = _.template($('#ordenReaprovicionamientoSearch').html() + $('#ordenReaprovicionamientoList').html());
             if (!options || !options.componentId) {
                 this.componentId = _.random(0, 100) + "";
             }else{
@@ -30,6 +31,12 @@ define(['model/ordenReaprovicionamientoModel'], function(ordenReaprovicionamient
             });
             Backbone.on(this.componentId + '-' + 'ordenReaprovicionamiento-save', function(params) {
                 self.save(params);
+            });
+            Backbone.on(this.componentId + '-' + 'toolbar-search', function(params) {
+                self.search(params);
+            });
+            Backbone.on(this.componentId + '-ordenReaprovicionamiento-search', function(params) {
+                self.ordenReaprovicionamientoSearch(params);
             });
             if(self.postInit){
             	self.postInit(options);
@@ -153,7 +160,41 @@ define(['model/ordenReaprovicionamientoModel'], function(ordenReaprovicionamient
 				}));
                 self.$el.slideDown("fast");
             });
-        }
+        },
+        search: function() {
+            this.currentOrdenReaprovicionamientoModel = new App.Model.OrdenReaprovicionamientoModel();
+            this.ordenReaprovicionamientoModelList = new this.listModelClass();
+            this._renderSearch();
+        },
+        ordenReaprovicionamientoSearch: function(params) {
+            var self = this;
+            var model = $('#' + this.componentId + '-ordenReaprovicionamientoSearch').serializeObject();
+            this.currentOrdenReaprovicionamientoModel.set(model);
+            App.Delegate.OrdenReaprovicionamientoDelegate.search(self.currentOrdenReaprovicionamientoModel, function(data) {
+                self.ordenReaprovicionamientoModelList = new App.Model.OrdenReaprovicionamientoList();
+                _.each(data, function(d) {
+                    var model = new App.Model.OrdenReaprovicionamientoModel(d);
+                    self.ordenReaprovicionamientoModelList.models.push(model);
+                });
+                self._renderSearch(params);
+            }, function(data) {
+                Backbone.trigger(self.componentId + '-' + 'error', {event: 'ordenReaprovicionamiento-search', view: self, id: '', data: data, error: {textResponse: 'Error in ordenReaprovicionamiento search'}});
+            });
+        },
+ 
+        _renderSearch: function(params) {
+ 
+            var self = this;
+            this.$el.slideUp("fast", function() {
+                self.$el.html(self.searchTemplate({componentId: self.componentId,
+                    ordenReaprovicionamientos: self.ordenReaprovicionamientoModelList.models,
+                    ordenReaprovicionamiento: self.currentOrdenReaprovicionamientoModel,
+                    showEdit: false,
+                    showDelete: false
+                }));
+                self.$el.slideDown("fast");
+            });
+        },
     });
     return App.Controller._OrdenReaprovicionamientoController;
 });
