@@ -2,9 +2,12 @@
 <html>
     <head>
         <title>Lacteos</title>
+        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/libreria.css">
+
         <script src="./js/vendor/jquery-1.9.1.js"></script>
         <script src="./js/vendor/bootstrap.min.js"></script>
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -20,26 +23,58 @@
             </script>
    
     </head>
-    <body>
-        <img src ="img/productos-lacteos-alpina.jpg" align="Center" ><br>
-  <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                Menu <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="#" onclick="redirectFrame('/proveedor.web/'); return false;">Proveedor</a></li>
-                <li><a href="#" onclick="redirectFrame('/factura.web/'); return false;">Factura</a></li>
-                <li><a href="#" onclick="redirectFrame('/ordenReaprovicionamiento.web/'); return false;">OrdenReaprovicionamiento</a></li>
-                <li><a href="#" onclick="redirectFrame('/ordenFabricacion.web/'); return false;">OrdenFabricacion</a></li>
-                <li><a href="#" onclick="redirectFrame('/ordenDespacho.web/'); return false;">OrdenDespacho</a></li>
-                <li><a href="#" onclick="redirectFrame('/producto.web/'); return false;">Producto</a></li>
-                <li><a href="#" onclick="redirectFrame('/item.web/'); return false;">Item</a></li>
-                <li><a href="#" onclick="redirectFrame('/inventario.web/'); return false;">Inventario</a></li>
+    <body background="img/prod.png" >  
+   <nav class="navbar navbar-inverse" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+       <span class="glyphicon glyphicon-book"></span> </a> 
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" onclick="redirectFrame('/producto.web/')">Producto</a></li>
+        
+        <li><a href="#" onclick="redirectFrame('/inventario.web/')">Inventario</a></li>
+        <li><a href="#" onclick="redirectFrame('/proveedor.web/')">Proveedor</a></li>
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Facturas <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+               <li><a href="#" onclick="redirectFrame('/factura.web/')">Factura</a></li>
                 <li class="divider"></li>
-            </ul>
-        </div>
-        <hr/>
-        <iframe id="crud" src="" style="width: 100%; height: 100%; border: 0; margin: 0;"></iframe> 
-        <h3 > 303 NF </h3> 
+                <li><a href="#" onclick="redirectFrame('/ordendespacho.web/')">Orden Despacho</a></li>
+                 <li class="divider"></li>
+
+                <li><a href="#" onclick="redirectFrame('/ordenreaprovicionamiento.web/')">Orden Reaprovisionamiento</a></li>
+                 <li class="divider"></li>
+                 <li><a href="#" onclick="redirectFrame('/ordenfabricacion.web/')">Orden Fabricación</a></li>
+            
+           
+          
+          </ul>
+        </li>
+      </ul>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+        
+ 
+   
+       
+  
+     
+     
+        <iframe id="crud"  src="" style="width: 1200px; height:720px; border: 5 ; margin: 5; background-image:'img/ss.jpg'  " align="Center"></iframe> 
+        
     </body>
 </html>
