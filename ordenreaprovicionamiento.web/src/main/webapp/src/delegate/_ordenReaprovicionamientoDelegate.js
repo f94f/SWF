@@ -1,8 +1,9 @@
-App.Delegate.FacturaDelegate = {
-        search: function(user, callback, callbackError) {
-            console.log('Factura Search: ');
+App.Delegate.OrdenReaprovicionamientoDelegate = {
+
+    search: function(user, callback, callbackError) {
+            console.log('OrdenReaprovicionamiento Search: ');
             $.ajax({
-                url: '/factura.service.subsystem.web/webresources/Factura/search',
+                url: '/ordenreaprovicionamiento.service.subsystem.web/webresources/OrdenReaprovicionamiento/search',
                 type: 'POST',
                 data: JSON.stringify(user),
                 contentType: 'application/json'

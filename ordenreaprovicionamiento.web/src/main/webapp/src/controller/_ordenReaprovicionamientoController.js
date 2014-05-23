@@ -166,6 +166,7 @@ define(['model/ordenReaprovicionamientoModel','delegate/_ordenReaprovicionamient
             this.ordenReaprovicionamientoModelList = new this.listModelClass();
             this._renderSearch();
         },
+        //akjsblñdjbalsfbañsdbfajhbs df ba<lgdbkjshbgñ-<zjgbn dkljfbnjgdkn<fd<b
         ordenReaprovicionamientoSearch: function(params) {
             var self = this;
             var model = $('#' + this.componentId + '-ordenReaprovicionamientoSearch').serializeObject();
@@ -181,7 +182,7 @@ define(['model/ordenReaprovicionamientoModel','delegate/_ordenReaprovicionamient
                 Backbone.trigger(self.componentId + '-' + 'error', {event: 'ordenReaprovicionamiento-search', view: self, id: '', data: data, error: {textResponse: 'Error in ordenReaprovicionamiento search'}});
             });
         },
- 
+
         _renderSearch: function(params) {
  
             var self = this;
